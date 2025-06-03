@@ -13,13 +13,15 @@ from sklearn.metrics import accuracy_score
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
+# === Reads the voice dataset csv file ===
 def load_dataset():
-    df = pd.read_csv("D:\\Anshul\\2nd Semester\\CPL Python\\Voices\\voice.csv")
+    df = pd.read_csv("voice.csv")
     df["label"] = df["label"].map({"male": 0, "female": 1})
-    X = df.drop(columns=["label"])
-    Y = df["label"]
+    X = df.drop(columns=["label"]) #stores all columns except label in x variable
+    Y = df["label"] #stores label column in y variable
     return X, Y
 
+# === Trains the model based on voice data ===
 def train_model(X, Y):
     print("✅ Starting training...")
     X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
@@ -33,6 +35,7 @@ def train_model(X, Y):
     print(f"✅ Model Accuracy: {accuracy * 100:.2f}%\n")
     return model
 
+# === Records the audio of the user & saves it to a file
 def record_audio(file_path, duration, sample_rate=44100):
     print("🎙️ Recording... Speak now!")
     time.sleep(1)  
@@ -42,6 +45,7 @@ def record_audio(file_path, duration, sample_rate=44100):
     print(f"🎵 Recording saved at\n{file_path}")
     return file_path
 
+# === reduces the noise from saved .wav file
 def reduce_noise(file_path):
     time.sleep(1)
     print("\n🔊 Reducing background noise...")
@@ -52,6 +56,7 @@ def reduce_noise(file_path):
     print(f"✅ Noise reduction complete.")
     return file_path, y_denoised, sr
 
+# === extract features like mfcc and pitch from the denoised audio ===
 def extract_features(y, sr):
     print("\n🗣️ Extracting Voice features...")
     mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=19)
@@ -63,6 +68,7 @@ def extract_features(y, sr):
     features = np.append(avg_mfcc, avg_pitch)
     return features.reshape(1, -1)
 
+# === plot the waveform of the recorded noise ===
 def plot_waveform(y, sr, container):
     for widget in container.winfo_children():
         widget.destroy()
@@ -90,7 +96,7 @@ def main():
 
         file_name = str(file_name_entry.get().strip())
         duration = int(duration_entry.get().strip())
-        file_path = f"D:\\Anshul\\2nd Semester\\CPL Python\\Test subjects\\{file_name}.wav"
+        file_path = f"C:\\{file_name}.wav"
 
         # Check if the duration is positive
         if duration <= 0:
