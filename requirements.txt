@@ -1,0 +1,11 @@
+tkinter
+threading
+sounddevice
+librosa
+soundfile
+numpy
+noisereduce
+time
+panda
+sklearn
+matplotlib
