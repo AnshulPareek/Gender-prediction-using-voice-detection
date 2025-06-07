@@ -22,20 +22,21 @@ A Python application that records a user's voice, extracts audio features, and p
    ```
    git clone https://github.com/AnshulPareek/Gender-prediction-using-voice-detection.git
    cd Gender-prediction-using-voice-detection
+   ```
 
 2. Install required dependencies:
     ```
     pip install -r requirements.txt
+    ```
 
 3. Make sure you have the dataset file voice.csv in the same directory as the script.
 
 ## Usage
 
 Run the main Python script:
-
     ```
     python gender_prediction.py
-    
+    ```
 - Enter a file name (without extension) to save the audio recording.
 - Enter the duration (in seconds) for how long to record your voice.
 - Click Record & Predict to start recording and get the gender prediction.
