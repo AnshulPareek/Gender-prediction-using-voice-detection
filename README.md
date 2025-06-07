@@ -32,7 +32,6 @@ A Python application that records a user's voice, extracts audio features, and p
 ## Usage
 
 Run the main Python script:
-
     ```
     python gender_prediction.py
     
