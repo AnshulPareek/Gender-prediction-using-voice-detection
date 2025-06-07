@@ -25,6 +25,7 @@ A Python application that records a user's voice, extracts audio features, and p
    ```
 
 2. Install required dependencies:
+      
     ```
     pip install -r requirements.txt
     ```
