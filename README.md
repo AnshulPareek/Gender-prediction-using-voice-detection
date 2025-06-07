@@ -33,7 +33,6 @@ A Python application that records a user's voice, extracts audio features, and p
 
 Run the main Python script:
 
-      ```
       python main.py
 
 - Enter a file name (without extension) to save the audio recording.
